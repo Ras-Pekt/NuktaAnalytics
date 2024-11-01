@@ -15,15 +15,15 @@ def main():
         all_games_json, allgames_csv
     )
 
-    # # teams_stats_table.csv - populate_team_stats_table.py
-    # populate_team_stats_table.populate_team_stats_table(all_games_json, allgames_csv)
+    # teams_stats_table.csv - populate_team_stats_table.py
+    populate_team_stats_table.populate_team_stats_table(all_games_json, allgames_csv)
 
 
 if __name__ == "__main__":
     from create_csv import (
         populate_games_table,
         populate_player_stats_table,
-        # populate_team_stats_table,
+        populate_team_stats_table,
         populate_teams_table,
     )
 
