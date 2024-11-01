@@ -135,9 +135,15 @@ def calculate_rebounding_contribution(df):
     # df["rebound_percentage"] = (df["TOT"] / df["total_rebounds"]).round(4)
 
     df["player_total_rebounds"] = df["offensive_rebounds"] + df["defensive_rebounds"]
+
     df["game_total_rebounds"] = df.groupby("game_id")[
         "player_total_rebounds"
     ].transform("sum")
+
+    # Calculate Rebound Percentage (Reb%)
+    df["rebound_percentage"] = (
+        (df["player_total_rebounds"] / df["game_total_rebounds"]) * 100
+    ).round(4)
 
     return df
 
