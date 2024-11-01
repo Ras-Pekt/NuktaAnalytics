@@ -24,6 +24,7 @@ def populate_team_stats_table(all_games_json, allgames_csv):
     ]
 
     df = pd.read_csv(allgames_csv)
+    df["playerType"] = df["playerType"].str.lower()
 
     game_id_list_from_csv = [game_id for game_id in df["game_id"].unique()]
 

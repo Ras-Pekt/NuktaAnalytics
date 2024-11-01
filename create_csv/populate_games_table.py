@@ -17,14 +17,15 @@ def populate_games_table(all_games_json, allgames_csv):
     game_list_from_site = [
         {
             "game_id": game.get("game_id"),
-            "home": game.get("home"),
-            "away": game.get("away"),
+            "home": game.get("home").lower(),
+            "away": game.get("away").lower(),
             "timestamp": game.get("timestamp"),
         }
         for game in data
     ]
 
     df = pd.read_csv(allgames_csv)
+    df["playerType"] = df["playerType"].str.lower()
 
     game_id_list_from_csv = [game_id for game_id in df["game_id"].unique()]
 

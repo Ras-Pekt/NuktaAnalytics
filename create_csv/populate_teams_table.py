@@ -6,7 +6,16 @@ from . import save_df
 
 def populate_teams_table(allgames_csv, games_table_csv):
     games_table_df = pd.read_csv(games_table_csv)
+    # games_table_df[["home", "away", "winner", "loser"]] = games_table_df[
+    #     ["home", "away", "winner", "loser"]
+    # ].str.lower()
+
+    games_table_df[["home", "away", "winner", "loser"]] = games_table_df[
+        ["home", "away", "winner", "loser"]
+    ].apply(lambda x: x.str.lower())
+
     allgames_df = pd.read_csv(allgames_csv)
+    allgames_df["playerType"] = allgames_df["playerType"].str.lower()
 
     teams_table = []
     for team in allgames_df["playerType"].unique():
